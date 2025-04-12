@@ -1,0 +1,6 @@
+@GDvsCD_HostAddress = http://localhost:5272
+
+GET {{GDvsCD_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
