@@ -46,24 +46,12 @@ namespace GDvsCD.Controllers
             // y is the target vector.
 
             // Initial guess for theta (n parameters); here two parameters.
-            double[] theta1 = new double[]
-            {
-            4,2,3,6,5,4
-          
-            };
-            double[] theta2 = new double[]
-            {
+            double[] theta1 = new double[] { 4, 2, 3, 6, 5, 4 };
+            double[] theta2 = new double[] { 4, 2, 3, 6, 5, 4 };
 
-               4,2,3,6,5,4
+            double cdTime,
+                gdTime;
 
-            };
-
-            double cdTime, gdTime;
-
-        
-       
-     
-         
             var watch = System.Diagnostics.Stopwatch.StartNew();
             // Run coordinate descent.
             var resultCD = Algo.CoordinateDescent(
@@ -75,8 +63,8 @@ namespace GDvsCD.Controllers
                 numIters: numIter
             );
             watch.Stop();
-        
-            cdTime= watch.ElapsedMilliseconds;
+
+            cdTime = watch.ElapsedMilliseconds;
             watch.Reset();
             watch.Start();
             var resultGD = Algo.GradientDescent(
@@ -97,8 +85,8 @@ namespace GDvsCD.Controllers
             return Ok(
                 new
                 {
-                    CD = new { costHistory = resultCD.costHistory,timing=cdTime},
-                    GD = new { costHistory = resultGD.costHistory,timing=gdTime},
+                    CD = new { costHistory = resultCD.costHistory, timing = cdTime },
+                    GD = new { costHistory = resultGD.costHistory, timing = gdTime },
                 }
             );
         }
